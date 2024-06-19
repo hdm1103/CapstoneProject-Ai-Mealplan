@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ai 식단 생성하기</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .response-box {
+            white-space: pre-wrap;
+        }
+        .user-info {
+            text-align: right;
+            margin-top: -40px;
+        }
+        .navigation-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .profile-box {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5 text-center">ai 식단</h1>
+    <div class="user-info">
+        <p th:text="'Welcome, ' + ${user_name}"></p>
+    </div>
+    <form id="chatForm" class="mt-3" method="get" action="/bot/chat">
+        <div class="form-group">
+            <label for="prompt">Enter your prompt:</label>
+            <input type="text" class="form-control" id="prompt" name="prompt" required placeholder="Enter your prompt...">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send</button>
+    </form>
+    <div class="navigation-buttons">
+        <a href="/bot/mealPlan" class="btn btn-secondary">Main Page</a>
+        <a href="/bot/chat?showProfile=true" class="btn btn-secondary">User Profile</a>
+    </div>
+    <div id="response" class="mt-3" th:if="${response}">
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Response:</h4>
+            <div class="response-box" th:utext="${response}"></div>
+        </div>
+    </div>
+    <div id="profile" class="mt-3 profile-box" th:if="${userProfile}">
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">User Profile:</h4>
+            <p><strong>Name:</strong> <span th:text="${userProfile.user.name}"></span></p>
+            <p><strong>Gender:</strong> <span th:text="${userProfile.gender}"></span></p>
+            <p><strong>Age:</strong> <span th:text="${userProfile.age}"></span></p>
+            <p><strong>Height:</strong> <span th:text="${userProfile.height}"></span></p>
+            <p><strong>Weight:</strong> <span th:text="${userProfile.weight}"></span></p>
+
+            <p><strong>healthConditions:</strong> <span th:text="${userProfile.healthConditions}"></span></p>
+            <p><strong>mealPattern:</strong> <span th:text="${userProfile.mealPattern}"></span></p>
+            <p><strong>foodPreferences:</strong> <span th:text="${userProfile.foodPreferences}"></span></p>
+
+            <p><strong>exerciseFrequency:</strong> <span th:text="${userProfile.exerciseFrequency}"></span></p>
+            <p><strong>exerciseType:</strong> <span th:text="${userProfile.exerciseType}"></span></p>
+            <p><strong>healthGoal:</strong> <span th:text="${userProfile.healthGoal}"></span></p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

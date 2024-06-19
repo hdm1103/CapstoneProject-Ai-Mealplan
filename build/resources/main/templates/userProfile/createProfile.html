@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<< Header Area >>-->
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="modinatheme">
+    <meta name="description" content="Next - Multi-Purpose Html Template">
+    <!-- ======== Page title ============ -->
+    <title>Next - Multi-Purpose Html Template</title>
+    <!--<< Favicon >>-->
+    <link rel="shortcut icon" href="/static/img/favicon.svg">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <!--<< Font Awesome.css >>-->
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="/static/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <!--<< Style.css >>-->
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-content {
+            max-width: 600px;
+            color: #fff;
+        }
+        .hero-contact-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .theme-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .theme-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .slide-in {
+            animation: slide-in 0.5s forwards;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div id="preloader" class="preloader">
+    <div class="animation-preloader">
+        <div class="spinner">
+        </div>
+        <div class="txt-loading">
+                    <span data-text-preloader="M" class="letters-loading">
+                        M
+                    </span>
+            <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+            <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+            <span data-text-preloader="L" class="letters-loading">
+                        L
+                    </span>
+            <span data-text-preloader="P" class="letters-loading">
+                        P
+                    </span>
+            <span data-text-preloader="L" class="letters-loading">
+                        L
+                    </span>
+            <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+            <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+        </div>
+        <p class="text-center">Loading</p>
+    </div>
+    <div class="loader">
+        <div class="row">
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service Section Start -->
+<section class="service-section-4 fix bg-cover section-padding"
+         style="background-image: url('/static/img/service/service-bg-min.jpg');">
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="sub-content bg-color-3 wow fadeInUp">
+                <img src="/static/img/bale.png" alt="img">
+                나만의 식단을 생성하기 위한 시작 단계
+            </span>
+            <h2 class="text-white wow fadeInUp" data-wow-delay=".3s">
+                식단을 생성하기 위한 <br>
+                name님의 프로필을 작성해주세요 <br>
+            </h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-10 col-md-12 wow fadeInUp text-center" data-wow-delay=".3s">
+                <form th:action="@{/profile/create}" th:object="${userProfile}" method="post">
+                    <!-- Gender Selection -->
+                    <input type="hidden" id="gender" th:field="*{gender}"/> <!-- Hidden input field for gender -->
+                    <div id="gender-group" class="row mb-4">
+                        <div class="col-6">
+                            <div class="service-box-items text-center" onclick="setGender('남성')">
+                                <div class="icon">
+                                    <!-- Icon can be added here -->
+                                </div>
+                                <div class="content">
+                                    <h3>Gender: Male</h3>
+                                    <p>선택 시 남성으로 설정됩니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="service-box-items text-center" onclick="setGender('여성')">
+                                <div class="icon">
+                                    <!-- Icon can be added here -->
+                                </div>
+                                <div class="content">
+                                    <h3>Gender: Female</h3>
+                                    <p>선택 시 여성으로 설정됩니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Personal Information: Age, Height, Weight -->
+                    <div id="personal-info-group" class="row mb-4 hidden">
+                        <div class="col-12">
+                            <div class="service-box-items text-center">
+                                <div class="icon">
+                                    <!-- Icon can be added here -->
+                                </div>
+                                <div class="content">
+                                    <label for="age">Age:</label>
+                                    <input type="number" id="age" th:field="*{age}" class="form-control mb-2" value="1" min="1">
+                                    <label for="height">Height (cm):</label>
+                                    <input type="number" id="height" th:field="*{height}" class="form-control mb-2" step="1">
+                                    <label for="weight">Weight (kg):</label>
+                                    <input type="number" id="weight" th:field="*{weight}" class="form-control mb-2" step="1" onchange="showNextField('health-group', true)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Health Conditions, Meal Pattern, Food Preferences -->
+                    <div id="health-group" class="row mb-4 hidden">
+                        <div class="col-12">
+                            <div class="service-box-items text-center">
+                                <div class="icon">
+                                    <!-- Icon can be added here -->
+                                </div>
+                                <div class="content">
+                                    <label for="healthConditions">Health Conditions:</label>
+                                    <input type="text" id="healthConditions" th:field="*{healthConditions}" class="form-control mb-2">
+                                    <label for="mealPattern">Meal Pattern:</label>
+                                    <input type="text" id="mealPattern" th:field="*{mealPattern}" class="form-control mb-2">
+                                    <label for="foodPreferences">Food Preferences:</label>
+                                    <input type="text" id="foodPreferences" th:field="*{foodPreferences}" class="form-control mb-2" onchange="showNextField('exercise-group', true)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Exercise Frequency, Exercise Type, Health Goal -->
+                    <div id="exercise-group" class="row mb-4 hidden">
+                        <div class="col-12">
+                            <div class="service-box-items text-center">
+                                <div class="icon">
+                                    <!-- Icon can be added here -->
+                                </div>
+                                <div class="content">
+                                    <label for="exerciseFrequency">Exercise Frequency:</label>
+                                    <input type="text" id="exerciseFrequency" th:field="*{exerciseFrequency}" class="form-control mb-2">
+                                    <label for="exerciseType">Exercise Type:</label>
+                                    <input type="text" id="exerciseType" th:field="*{exerciseType}" class="form-control mb-2">
+                                    <label for="healthGoal">Health Goal:</label>
+                                    <input type="text" id="healthGoal" th:field="*{healthGoal}" class="form-control mb-2" onchange="showNextField('submit-group', true)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div id="submit-group" class="row hidden">
+                        <div class="col-12">
+                            <div class="service-box-items text-center">
+                                <div class="icon">
+                                    <!-- Icon can be added here -->
+                                </div>
+                                <div class="content">
+                                    <button type="submit" id="submit-button" class="btn btn-primary">Submit Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function setGender(gender) {
+        document.getElementById("gender").value = gender; // Hidden input에 성별 값 설정
+        document.getElementById("gender-group").classList.add("hidden");
+        showNextField('personal-info-group', true);
+    }
+
+    function showNextField(nextFieldId, slideIn = false) {
+        const nextField = document.getElementById(nextFieldId);
+        if (slideIn) {
+            nextField.classList.add("slide-in");
+        }
+        nextField.classList.remove("hidden");
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--<< All JS Plugins >>-->
+<script src="/static/js/jquery-3.7.1.min.js"></script>
+<!--<< Viewport Js >>-->
+<script src="/static/js/viewport.jquery.js"></script>
+<!--<< Bootstrap Js >>-->
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<!--<< Nice Select Js >>-->
+<script src="/static/js/jquery.nice-select.min.js"></script>
+<!--<< Waypoints Js >>-->
+<script src="/static/js/jquery.waypoints.js"></script>
+<!--<< Counterup Js >>-->
+<script src="/static/js/jquery.counterup.min.js"></script>
+<!--<< Swiper Slider Js >>-->
+<script src="/static/js/swiper-bundle.min.js"></script>
+<!--<< MeanMenu Js >>-->
+<script src="/static/js/jquery.meanmenu.min.js"></script>
+<!--<< Magnific Popup Js >>-->
+<script src="/static/js/jquery.magnific-popup.min.js"></script>
+<!--<< Wow Animation Js >>-->
+<script src="/static/js/wow.min.js"></script>
+<!--<< Main.js >>-->
+<script src="/static/js/main.js"></script>
+</body>
+</html>

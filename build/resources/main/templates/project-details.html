@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<< Header Area >>-->
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="modinatheme">
+    <meta name="description" content="Next - Multi-Purpose Html Template">
+    <!-- ======== Page title ============ -->
+    <title>사용자 프로필 뷰</title>
+    <!--<< Favicon >>-->
+    <link rel="shortcut icon" href="/static/img/favicon.svg">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <!--<< Font Awesome.css >>-->
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="/static/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <!--<< Style.css >>-->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<!-- Preloader Start -->
+<div id="preloader" class="preloader">
+    <div class="animation-preloader">
+        <div class="spinner">
+        </div>
+        <div class="txt-loading">
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+            <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+            <span data-text-preloader="X" class="letters-loading">
+                        X
+                    </span>
+            <span data-text-preloader="T" class="letters-loading">
+                        T
+                    </span>
+        </div>
+        <p class="text-center">Loading</p>
+    </div>
+    <div class="loader">
+        <div class="row">
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-left">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+            <div class="col-3 loader-section section-right">
+                <div class="bg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project Details Section Start -->
+<section class="project-details-section fix section-padding">
+    <div class="container">
+        <div class="project-details-wrapper">
+            <div class="row g-4 justify-content-between">
+                <div class="col-lg-5">
+                    <div class="project-information">
+                        <h4>사용자 프로필</h4>
+                        <ul>
+                            <li>
+                                <p>성별: <span th:text="${userProfile.gender}">Gender</span></p>
+                            </li>
+                            <li>
+                                <p>나이: <span th:text="${userProfile.age}">Age</span></p>
+                            </li>
+                            <li>
+                                <p>신장: <span th:text="${userProfile.height}">Height</span></p>
+                            </li>
+                            <li>
+                                <p>몸무게: <span th:text="${userProfile.weight}">Weight</span></p>
+                            </li>
+                            <li>
+                                <p>건강 특이사항: <span
+                                        th:text="${userProfile.healthConditions}">Health Conditions</span></p>
+                            </li>
+                            <li>
+                                <p>하루 식사 횟수: <span th:text="${userProfile.mealPattern}">Meal Pattern</span></p>
+                            </li>
+                            <li>
+                                <p>선호하는 음식(채식,육식, 반반 등): <span
+                                        th:text="${userProfile.foodPreferences}">Food Preferences</span></p>
+                            </li>
+                            <li>
+                                <p>운동 빈도 수(주 1회 등): <span th:text="${userProfile.exerciseFrequency}">Exercise Frequency</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>운동 유형: <span th:text="${userProfile.exerciseType}">Exercise Type</span></p>
+                            </li>
+                            <li>
+                                <p>건강 목표: <span th:text="${userProfile.healthGoal}">Health Goal</span></p>
+                            </li>
+                        </ul>
+                        <a href="/profile/edit">수정하기</a>
+                        <a href="/main">메인으로</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<< All JS Plugins >>-->
+<script src="/static/js/jquery-3.7.1.min.js"></script>
+<!--<< Viewport Js >>-->
+<script src="/static/js/viewport.jquery.js"></script>
+<!--<< Bootstrap Js >>-->
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<!--<< Nice Select Js >>-->
+<script src="/static/js/jquery.nice-select.min.js"></script>
+<!--<< Waypoints Js >>-->
+<script src="/static/js/jquery.waypoints.js"></script>
+<!--<< Counterup Js >>-->
+<script src="/static/js/jquery.counterup.min.js"></script>
+<!--<< Swiper Slider Js >>-->
+<script src="/static/js/swiper-bundle.min.js"></script>
+<!--<< MeanMenu Js >>-->
+<script src="/static/js/jquery.meanmenu.min.js"></script>
+<!--<< Magnific Popup Js >>-->
+<script src="/static/js/jquery.magnific-popup.min.js"></script>
+<!--<< Wow Animation Js >>-->
+<script src="/static/js/wow.min.js"></script>
+<!--<< Main.js >>-->
+<script src="/static/js/main.js"></script>
+</body>
+</html>

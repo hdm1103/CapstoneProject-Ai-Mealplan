@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meal Plan Response</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        .meal {
+            margin-bottom: 30px;
+        }
+
+        .meal h2 {
+            margin-top: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Meal Plan for <span th:text="${user_name}"></span></h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Meal</th>
+        <th>Meal Name</th>
+        <th>Calories</th>
+        <th>Cooking Method</th>
+        <th>Portion Sizes</th>
+        <th>Carbs (g)</th>
+        <th>Fat (g)</th>
+        <th>Protein (g)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Breakfast</td>
+        <td><span th:text="${mealPlan.breakfast.mealName}"></span></td>
+        <td><span th:text="${mealPlan.breakfast.caloricContent}"></span></td>
+        <td><span th:text="${mealPlan.breakfast.cookingMethod}"></span></td>
+        <td><span th:text="${mealPlan.breakfast.portionSizes}"></span></td>
+        <td><span th:text="${mealPlan.breakfast.nutritionalInformation.carbs}"></span></td>
+        <td><span th:text="${mealPlan.breakfast.nutritionalInformation.fat}"></span></td>
+        <td><span th:text="${mealPlan.breakfast.nutritionalInformation.protein}"></span></td>
+    </tr>
+    <tr>
+        <td>Lunch</td>
+        <td><span th:text="${mealPlan.lunch.mealName}"></span></td>
+        <td><span th:text="${mealPlan.lunch.caloricContent}"></span></td>
+        <td><span th:text="${mealPlan.lunch.cookingMethod}"></span></td>
+        <td><span th:text="${mealPlan.lunch.portionSizes}"></span></td>
+        <td><span th:text="${mealPlan.lunch.nutritionalInformation.carbs}"></span></td>
+        <td><span th:text="${mealPlan.lunch.nutritionalInformation.fat}"></span></td>
+        <td><span th:text="${mealPlan.lunch.nutritionalInformation.protein}"></span></td>
+    </tr>
+    <tr>
+        <td>Dinner</td>
+        <td><span th:text="${mealPlan.dinner.mealName}"></span></td>
+        <td><span th:text="${mealPlan.dinner.caloricContent}"></span></td>
+        <td><span th:text="${mealPlan.dinner.cookingMethod}"></span></td>
+        <td><span th:text="${mealPlan.dinner.portionSizes}"></span></td>
+        <td><span th:text="${mealPlan.dinner.nutritionalInformation.carbs}"></span></td>
+        <td><span th:text="${mealPlan.dinner.nutritionalInformation.fat}"></span></td>
+        <td><span th:text="${mealPlan.dinner.nutritionalInformation.protein}"></span></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div class="meal">
+    <h2>Total Daily Nutritional Information</h2>
+    <p>Total Carbs: <span th:text="${mealPlan.totalDailyNutritionalInfo.carbs}"></span> g</p>
+    <p>Total Fat: <span th:text="${mealPlan.totalDailyNutritionalInfo.fat}"></span> g</p>
+    <p>Total Protein: <span th:text="${mealPlan.totalDailyNutritionalInfo.protein}"></span> g</p>
+</div>
+
+</body>
+</html>

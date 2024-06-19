@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AI Responses</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+
+        .response-box {
+            white-space: pre-wrap;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5 text-center"><span th:text="${user_name}"> 님의 식단 </span></h1>
+    <div th:each="prompt, iterStat : ${prompts}">
+        <div class="response-box">
+            <h5>Response:</h5>
+            <div th:utext="${formattedResponses[iterStat.index]}"></div>
+            <p class="text-muted text-right" th:text="${prompt.createdAt}"></p>
+        </div>
+    </div>
+    <div class="navigation-buttons text-center">
+        <a href="/main" class="btn btn-secondary">Main Page</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

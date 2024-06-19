@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="modinatheme">
+    <meta name="description" content="Next - Multi-Purpose Html Template">
+    <title>Next - Multi-Purpose Html Template</title>
+    <link rel="shortcut icon" href="/static/img/favicon.svg">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/meanmenu.css">
+    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+<section class="team-details section-padding fix">
+    <div class="container">
+        <div class="team-details-wrapper">
+            <div class="team-details-content section-padding pb-0">
+                <h2>식단 생성 결과</h2>
+
+                <!-- 일일 식단 구성표 시작 -->
+                <h3>일일 식단 구성표</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Meal</th>
+                        <th>Items</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${mealPlan.breakfast.name}"></td>
+                        <td th:text="${mealPlan.breakfast.items}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${mealPlan.lunch.name}"></td>
+                        <td th:text="${mealPlan.lunch.items}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${mealPlan.dinner.name}"></td>
+                        <td th:text="${mealPlan.dinner.items}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${mealPlan.snack.name}"></td>
+                        <td th:text="${mealPlan.snack.items}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- 일일 식단 구성표 끝 -->
+
+                <div class="details-information-area">
+                    <div class="row g-4 justify-content-between">
+                        <div class="col-lg-5">
+                            <!-- 영양소 그래프 시작 -->
+                            <h3>영양소 그래프</h3>
+                            <canvas id="nutrientsChart"></canvas>
+                            <!-- 영양소 그래프 끝 -->
+                        </div>
+
+                        <div class="col-lg-6">
+                            <!-- 칼로리 섭취 분포 시작 -->
+                            <h3>칼로리 섭취 분포</h3>
+                            <canvas id="caloriesChart"></canvas>
+                            <!-- 칼로리 섭취 분포 끝 -->
+                        </div>
+                    </div>
+                </div>
+
+                <script th:inline="javascript">
+                    /*<![CDATA[*/
+                    var meals = [
+                        {
+                            name: /*[[${mealPlan.breakfast.name}]]*/,
+                            calories: /*[[${mealPlan.breakfast.calories}]]*/,
+                            carbs: /*[[${mealPlan.breakfast.carbs}]]*/,
+                            protein: /*[[${mealPlan.breakfast.protein}]]*/,
+                            fat: /*[[${mealPlan.breakfast.fat}]]*/
+                        },
+                        {
+                            name: /*[[${mealPlan.lunch.name}]]*/,
+                            calories: /*[[${mealPlan.lunch.calories}]]*/,
+                            carbs: /*[[${mealPlan.lunch.carbs}]]*/,
+                            protein: /*[[${mealPlan.lunch.protein}]]*/,
+                            fat: /*[[${mealPlan.lunch.fat}]]*/
+                        },
+                        {
+                            name: /*[[${mealPlan.dinner.name}]]*/,
+                            calories: /*[[${mealPlan.dinner.calories}]]*/,
+                            carbs: /*[[${mealPlan.dinner.carbs}]]*/,
+                            protein: /*[[${mealPlan.dinner.protein}]]*/,
+                            fat: /*[[${mealPlan.dinner.fat}]]*/
+                        },
+                        {
+                            name: /*[[${mealPlan.snack.name}]]*/,
+                            calories: /*[[${mealPlan.snack.calories}]]*/,
+                            carbs: /*[[${mealPlan.snack.carbs}]]*/,
+                            protein: /*[[${mealPlan.snack.protein}]]*/,
+                            fat: /*[[${mealPlan.snack.fat}]]*/
+                        }
+                    ];
+
+                    var labels = meals.map(meal => meal.name);
+                    var caloriesData = meals.map(meal => meal.calories);
+                    var carbsData = meals.map(meal => meal.carbs);
+                    var proteinData = meals.map(meal => meal.protein);
+                    var fatData = meals.map(meal => meal.fat);
+
+                    var ctxCalories = document.getElementById('caloriesChart').getContext('2d');
+                    new Chart(ctxCalories, {
+                        type: 'pie',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: caloriesData,
+                                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF6384']
+                            }]
+                        }
+                    });
+
+                    var ctxNutrients = document.getElementById('nutrientsChart').getContext('2d');
+                    new Chart(ctxNutrients, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: '탄수화물',
+                                    data: carbsData,
+                                    backgroundColor: '#FF6384'
+                                },
+                                {
+                                    label: '단백질',
+                                    data: proteinData,
+                                    backgroundColor: '#36A2EB'
+                                },
+                                {
+                                    label: '지방',
+                                    data: fatData,
+                                    backgroundColor: '#FFCE56'
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    /*]]>*/
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/static/js/jquery-3.7.1.min.js"></script>
+<script src="/static/js/viewport.jquery.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/jquery.nice-select.min.js"></script>
+<script src="/static/js/jquery.waypoints.js"></script>
+<script src="/static/js/jquery.counterup.min.js"></script>
+<script src="/static/js/swiper-bundle.min.js"></script>
+<script src="/static/js/jquery.meanmenu.min.js"></script>
+<script src="/static/js/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>
