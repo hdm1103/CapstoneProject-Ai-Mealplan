@@ -1,2 +1,2 @@
 
-[PPTX 파일 보기](https://github.com/user-attachments/files/16452137/default.pptx)
+[설명 파일 보기](https://github.com/user-attachments/files/16452137/default.pptx)
