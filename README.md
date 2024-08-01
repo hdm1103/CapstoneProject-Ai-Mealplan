@@ -1,2 +1,2 @@
 
-[PDF 파일 보기](https://github.com/hdm1103/CapstoneProject-Ai-Mealplan/issues/1)
+[PDF 파일 보기](https://github.com/user-attachments/files/16452137/default.pptx)
